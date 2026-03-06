@@ -1,8 +1,8 @@
 import { Page, expect, Locator } from '@playwright/test';
 export class HomePage {
 
-    private page: Page;
-    private registerHeaderLink: Locator;
+    readonly page: Page;
+    readonly registerHeaderLink: Locator;
 
 
     constructor(page: Page) {
@@ -16,9 +16,8 @@ export class HomePage {
 
     }
 
-    async registerheaderLink(): Promise<void>{
+    async gotoRegistrationpage(): Promise<void> {
         await this.registerHeaderLink.click();
-
     }
 
 

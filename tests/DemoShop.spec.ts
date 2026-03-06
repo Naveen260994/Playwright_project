@@ -1,4 +1,4 @@
-import { test, expect , Page } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
 import { HomePage } from '../pages/HomePage';
 
 test.describe('Demo Web Shop', () => {
@@ -17,6 +17,15 @@ test.describe('Demo Web Shop', () => {
     // Expect a title "to contain" a substring.
     await expect(page).toHaveTitle('Demo Web Shop');
     console.log(await page.title());
+  });
+
+  test('Navigate to Registation page', async () => {
+    await homePage.navigateToHomePage();
+    await expect(homePage.registerHeaderLink).toBeVisible();
+    await expect(homePage.registerHeaderLink).toHaveText('Register');
+    await homePage.gotoRegistrationpage();
+    await expect(page).toHaveURL('https://demowebshop.tricentis.com/register');
+
   });
 
 });
