@@ -1,7 +1,7 @@
 import { test, expect, Page } from '@playwright/test';
 import { HomePage } from '../pages/HomePage';
 
-test.describe('Demo Web Shop', () => {
+test.describe('Demo Web Shop guest user', () => {
 
   let homePage: HomePage;
   let page: Page;
@@ -23,8 +23,17 @@ test.describe('Demo Web Shop', () => {
     await homePage.navigateToHomePage();
     await expect(homePage.registerHeaderLink).toBeVisible();
     await expect(homePage.registerHeaderLink).toHaveText('Register');
-    await homePage.gotoRegistrationpage();
+    await homePage.headerRegisterLink();
     await expect(page).toHaveURL('https://demowebshop.tricentis.com/register');
+
+  });
+
+  test('Navigate to Login page', async () => {
+    await homePage.navigateToHomePage();
+    await expect(homePage.loginHeaderLink).toBeVisible();
+    await expect(homePage.loginHeaderLink).toHaveText('Log in');
+    await homePage.headerLoginLink();
+    await expect(page).toHaveURL('https://demowebshop.tricentis.com/login');
 
   });
 
